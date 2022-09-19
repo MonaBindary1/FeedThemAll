@@ -1,6 +1,6 @@
 using _Game.Scripts.Behaviour.ClickBehaviour;
 
-namespace _Game.Scripts.Behaviour.Food
+namespace _Game.Scripts.Food
 {
     public class Food : Clickable
     {

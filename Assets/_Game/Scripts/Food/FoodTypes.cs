@@ -1,4 +1,4 @@
-namespace _Game.Scripts.Behaviour.Food
+namespace _Game.Scripts.Food
 {
     public enum FoodTypes
     {

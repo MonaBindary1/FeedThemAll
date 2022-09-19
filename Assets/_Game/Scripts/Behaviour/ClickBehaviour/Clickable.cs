@@ -1,4 +1,4 @@
-using _Game.Scripts.Behaviour.Food;
+using _Game.Scripts.Food;
 using UnityEngine;
 
 namespace _Game.Scripts.Behaviour.ClickBehaviour
