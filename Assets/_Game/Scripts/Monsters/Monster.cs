@@ -18,13 +18,13 @@ namespace _Game.Scripts.Monsters
             }
         }
 
-        public virtual void SimulateEatRightFood()
+        public virtual void SimulateEatGoodFood()
         {
             _health++;
             //maybe Play specific animation or sound or effect
         }
         
-        public virtual void SimulateEatWrongFood()
+        public virtual void SimulateEatPoisonedFood()
         {
             _health--;
             //maybe Play specific animation or sound or effect
