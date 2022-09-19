@@ -7,7 +7,7 @@ namespace _Game.Scripts.Food
 {
     public class FoodFactory : MonoBehaviour
     {
-        [SerializeField] private List<Food> foodToGenerate;
+        [SerializeField] private List<FoodBase> foodToGenerate;
         [SerializeField] private float timeToInitFood;
         [SerializeField] private Transform foodParent;
 
@@ -16,7 +16,7 @@ namespace _Game.Scripts.Food
             StartCoroutine(GenerateFood());
         }
 
-        IEnumerator GenerateFood()
+        private IEnumerator GenerateFood()
         {
             while (true)
             {
@@ -25,7 +25,7 @@ namespace _Game.Scripts.Food
             }
         }
 
-        private Food GetRandomFoodToSpawn()
+        private FoodBase GetRandomFoodToSpawn()
         {
             var index = Random.Range(0, foodToGenerate.Count);
             return foodToGenerate[index];
