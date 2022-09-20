@@ -5,5 +5,11 @@ namespace _Game.Scripts.Food
         None,
         Banana,
         JellyBeans,
+        Apple,
+        Pizza,
+        Donate,
+        IceCream,
+        Orange,
+        Burger,
     }
 }

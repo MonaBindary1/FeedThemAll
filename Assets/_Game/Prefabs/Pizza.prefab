@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 204023398516534632}
   - component: {fileID: 204023398516534633}
   m_Layer: 0
-  m_Name: Jelly
+  m_Name: Pizza
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b6e4450daa8824099a3c04040ec69ef9, type: 2}
+  - {fileID: 2100000, guid: ddc7274b4c57f4d81a1a4fc6a87436b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

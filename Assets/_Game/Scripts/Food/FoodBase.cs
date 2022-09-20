@@ -11,10 +11,13 @@ namespace _Game.Scripts.Food
     {
         [SerializeField] private FoodTypes type;
         [SerializeField] private int power;
+        [SerializeField] private float speedToMonster = 0.2f;
+
         private Sequence _sequence;
 
         private Transform _target;
         private float _movingTime ;
+        
         private void Start()
         {
             Init();
