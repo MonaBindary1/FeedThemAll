@@ -1,4 +1,3 @@
-using System;
 using _Game.Scripts.Food;
 using UnityEngine;
 
@@ -8,15 +7,7 @@ namespace _Game.Scripts.Monsters
     {
         [SerializeField] private FoodTypes typeOfFoodHeEats;
 
-        private int _health
-        {
-            get => _health;
-            set
-            {
-                if (ValidateHealth()) return;
-                MonsterEvents.OnHealthChanged?.Invoke(_health);
-            }
-        }
+        private int _health;
 
         private void Awake()
         {
@@ -25,18 +16,14 @@ namespace _Game.Scripts.Monsters
 
         private void Init()
         {
-            MonsterEvents.OnHitMonster += EatFood;
+            MonsterEvents.OnMonsterFeed += EatFood;
         }
 
         private bool ValidateHealth()
         {
-            if (_health <= 0)
-            {
-                MonsterEvents.OnMonsterDie?.Invoke();
-                return true;
-            }
-
-            return false;
+            if (_health > 0) return false;
+            MonsterEvents.OnMonsterDie?.Invoke();
+            return true;
         }
 
         private void EatFood(FoodBase foodBase)
@@ -46,32 +33,39 @@ namespace _Game.Scripts.Monsters
                 var type = foodBase.GetType();
                 if (type == typeOfFoodHeEats)
                 {
-                    SimulateEatGoodFood();
+                    SimulateEatGoodFood(foodBase.GetPower());
                 }
                 else
                 {
-                    SimulateEatPoisonedFood();
+                    SimulateEatPoisonedFood(-foodBase.GetPower());
                 }
             }
         }
 
-        protected virtual void SimulateEatGoodFood()
+        protected virtual void SimulateEatGoodFood(int power)
         {
-            _health++;
-            Debug.Log($"Eating fav food and my health is {_health}");
+            UpdateHealth(power);
+            Debug.Log($"Eating fav food and my health is ");
             //maybe Play specific animation or sound or effect
         }
         
-        protected virtual void SimulateEatPoisonedFood()
+        protected virtual void SimulateEatPoisonedFood(int power)
         {
-            _health--;
+            UpdateHealth(power);
             Debug.Log($"Eating poisond food and my health is {_health}");
             //maybe Play specific animation or sound or effect
         }
 
+        private void UpdateHealth(int value)
+        {
+            _health += value;
+            if (ValidateHealth()) return;
+            MonsterEvents.OnHealthChanged?.Invoke(_health);
+        }
+
         private void OnDestroy()
         {
-            MonsterEvents.OnHitMonster -= EatFood;
+            MonsterEvents.OnMonsterFeed -= EatFood;
         }
     }
 }

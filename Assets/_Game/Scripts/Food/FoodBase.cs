@@ -10,7 +10,7 @@ namespace _Game.Scripts.Food
     public class FoodBase : MonoBehaviour,IClickable, IMovable
     {
         [SerializeField] private FoodTypes type;
-
+        [SerializeField] private int power;
         private Sequence _sequence;
 
         private Transform _target;
@@ -23,7 +23,6 @@ namespace _Game.Scripts.Food
 
         private void Init()
         {
-            _sequence = DOTween.Sequence();
             _target = GameElementHolder.Instance.GetFoodTarget();
             _movingTime = 5.8f;
         }
@@ -46,7 +45,7 @@ namespace _Game.Scripts.Food
             {
                 _sequence.Kill();
             }
-
+            _sequence = DOTween.Sequence();
             _sequence.Append(transform.DOMove(target, time).OnComplete(() =>
             {
                 callback();
@@ -61,14 +60,18 @@ namespace _Game.Scripts.Food
         
         private void FeedMonster()
         {
-          MonsterEvents.OnHitMonster?.Invoke(this);
+          MonsterEvents.OnMonsterFeed?.Invoke(this);
           OnReachDestination();
         }
         
-
         public FoodTypes GetType()
         {
             return type;
+        }
+
+        public int GetPower()
+        {
+            return power;
         }
     }
 }
