@@ -44,16 +44,16 @@ namespace _Game.Scripts.Monsters
 
         protected virtual void SimulateEatGoodFood(int power)
         {
+            //ToDo, Play special effect of happiness or sound effect 
             UpdateHealth(power);
             Debug.Log($"Eating fav food and my health is ");
-            //maybe Play specific animation or sound or effect
         }
         
         protected virtual void SimulateEatPoisonedFood(int power)
         {
+            //ToDo, Play special effect of sadness or sound effect 
             UpdateHealth(power);
             Debug.Log($"Eating poisond food and my health is {_health}");
-            //maybe Play specific animation or sound or effect
         }
 
         private void UpdateHealth(int value)

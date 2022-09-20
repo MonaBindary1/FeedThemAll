@@ -1,7 +1,7 @@
 using System;
 using _Game.Scripts.Behaviour.ClickBehaviour;
+using _Game.Scripts.Behaviour.MoveBehaviour;
 using _Game.Scripts.Monsters;
-using _Game.Scripts.MoveBehaviour;
 using DG.Tweening;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ namespace _Game.Scripts.Food
     {
         [SerializeField] private FoodTypes type;
         [SerializeField] private int power;
-        [SerializeField] private float speedToMonster = 0.2f;
+        [SerializeField] private float speedToMonster = 0.05f;
 
         private Sequence _sequence;
 
@@ -26,7 +26,7 @@ namespace _Game.Scripts.Food
 
         private void Init()
         {
-            _target = GameElementHolder.Instance.GetFoodTarget();
+            _target = SceneElementsHolder.Instance.GetFoodTarget();
             _movingTime = 5.8f;
         }
 
@@ -38,8 +38,8 @@ namespace _Game.Scripts.Food
         public void ActOnClick()
         {
             //Get Monster and move to it
-            _target = GameElementHolder.Instance.GetMonster().transform;
-            MoveToTarget(_target.position, _movingTime, FeedMonster);
+            _target = SceneElementsHolder.Instance.GetMonster().transform;
+            MoveToTarget(_target.position, speedToMonster, FeedMonster);
         }
 
         public void MoveToTarget(Vector3 target, float time, Action callback)

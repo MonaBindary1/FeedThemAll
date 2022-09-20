@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace _Game.Scripts
 {
-    public class GameElementHolder : MonoBehaviour
+    public class SceneElementsHolder : MonoBehaviour
     {
-        public static GameElementHolder Instance;
+        public static SceneElementsHolder Instance;
         
-        [SerializeField] Transform foodTarget;
-        [SerializeField] Monster monster;
+        [SerializeField] private Transform foodTarget;
+        [SerializeField] private Monster monster;
 
         private void Awake()
         {
